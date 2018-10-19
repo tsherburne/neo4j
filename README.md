@@ -23,4 +23,8 @@ DETACH DELETE n
 ```
 MATCH p = (f:CodeFile {File: "ArduCopter/mode_circle.cpp"})-[*1..1]->(df:CodeFile)
 RETURN p
+
+MATCH p = (f:CodeFile {File: "ArduCopter/mode_circle.cpp"})-[*1..2]->(df:CodeFile)
+WITH nodes(p) as np
+RETURN filter(node in np WHERE node.File ENDS WITH ".cpp") as cppNodes
 ```
